@@ -16,6 +16,7 @@ from firstdataset.data import (
     split_tabular_regression_dataset,
 )
 from firstdataset.modeling import run_regression_baselines_from_csv
+from firstdataset.modeling import run_qsar_fnn_classifier
 
 
 class QSARDataTests(unittest.TestCase):
@@ -72,6 +73,13 @@ class QSARDataTests(unittest.TestCase):
             metric_names = {metric for result in results for metric in result.metrics}
             self.assertEqual(metric_names, {"mae", "rmse", "r2"})
             self.assertEqual(len(results), 2)
+
+    def test_qsar_fnn_classifier(self) -> None:
+        result = run_qsar_fnn_classifier(random_state=42)
+        self.assertEqual(result.model_name, "feedforward_neural_network")
+        self.assertEqual(set(result.metrics), {"accuracy", "precision", "recall", "f1_score", "roc_auc"})
+        self.assertEqual(len(result.confusion_matrix), 2)
+        self.assertEqual(len(result.confusion_matrix[0]), 2)
 
 
 if __name__ == "__main__":

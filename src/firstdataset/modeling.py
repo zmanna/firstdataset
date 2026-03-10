@@ -7,12 +7,16 @@ from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.metrics import (
     accuracy_score,
+    confusion_matrix,
     f1_score,
     mean_absolute_error,
     mean_squared_error,
+    precision_score,
+    recall_score,
     r2_score,
     roc_auc_score,
 )
+from sklearn.neural_network import MLPClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
@@ -24,6 +28,13 @@ class BaselineResult:
     model_name: str
     task_type: str
     metrics: dict[str, float]
+
+
+@dataclass(frozen=True)
+class ClassificationResult:
+    model_name: str
+    metrics: dict[str, float]
+    confusion_matrix: list[list[int]]
 
 
 def run_qsar_classification_baselines(random_state: int = 42) -> list[BaselineResult]:
@@ -58,6 +69,52 @@ def run_qsar_classification_baselines(random_state: int = 42) -> list[BaselineRe
             metrics["roc_auc"] = float(roc_auc_score(y_true, probas[:, positive_index]))
         results.append(BaselineResult(model_name=name, task_type="classification", metrics=metrics))
     return results
+
+
+def run_qsar_fnn_classifier(random_state: int = 42) -> ClassificationResult:
+    split = split_qsar_biodegradation(random_state=random_state, target_as_category=False)
+    y_train = (split.y_train == 2).astype(int)
+    y_test = (split.y_test == 2).astype(int)
+    model = Pipeline(
+        [
+            ("scale", StandardScaler()),
+            (
+                "model",
+                MLPClassifier(
+                    hidden_layer_sizes=(128, 64, 32),
+                    activation="relu",
+                    solver="adam",
+                    alpha=1e-4,
+                    batch_size=32,
+                    learning_rate_init=1e-3,
+                    max_iter=500,
+                    early_stopping=True,
+                    validation_fraction=0.1,
+                    n_iter_no_change=20,
+                    random_state=random_state,
+                ),
+            ),
+        ]
+    )
+
+    model.fit(split.X_train, y_train)
+    predictions = model.predict(split.X_test)
+    probabilities = model.predict_proba(split.X_test)
+    positive_index = list(model.classes_).index(1)
+
+    metrics = {
+        "accuracy": float(accuracy_score(y_test, predictions)),
+        "precision": float(precision_score(y_test, predictions, pos_label=1)),
+        "recall": float(recall_score(y_test, predictions, pos_label=1)),
+        "f1_score": float(f1_score(y_test, predictions, pos_label=1)),
+        "roc_auc": float(roc_auc_score(y_test, probabilities[:, positive_index])),
+    }
+    matrix = confusion_matrix(y_test, predictions, labels=[0, 1]).tolist()
+    return ClassificationResult(
+        model_name="feedforward_neural_network",
+        metrics=metrics,
+        confusion_matrix=matrix,
+    )
 
 
 def run_regression_baselines(

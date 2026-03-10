@@ -1,0 +1,28 @@
+Week 6 FNN Results
+
+Dataset: QSAR biodegradation
+Task: binary classification (RB vs NRB)
+Train/test split: 80/20 stratified, random_state=42
+
+Baseline comparison:
+logistic_regression
+  accuracy: 0.8626
+  macro_f1: 0.8456
+  roc_auc: 0.9136
+
+random_forest_classifier
+  accuracy: 0.8768
+  macro_f1: 0.8529
+  roc_auc: 0.9423
+
+Feedforward neural network:
+feedforward_neural_network
+  accuracy: 0.8246
+  precision: 0.7656
+  recall: 0.6901
+  f1_score: 0.7259
+  roc_auc: 0.9025
+
+Confusion matrix (rows=true [NRB, RB], cols=predicted [NRB, RB]):
+  [125, 15]
+  [22, 49]

@@ -1,5 +1,5 @@
 {
-  "created_at_utc": "2026-03-10T21:42:34.806835+00:00",
+  "created_at_utc": "2026-03-10T22:28:43.748987+00:00",
   "dataset": "qsar_biodegradation",
   "task_type": "classification",
   "deliverable_gap": "Requested regression on degradation-rate constants is blocked because the current dataset only provides a binary class label.",

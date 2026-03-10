@@ -1,0 +1,17 @@
+Week 5 Model Results
+
+Dataset: QSAR biodegradation
+Task used: binary classification (RB vs NRB)
+Train/test split: 80/20 stratified, random_state=42
+Models run: Logistic Regression, Random Forest Classifier
+
+Results:
+logistic_regression
+  accuracy: 0.8626
+  macro_f1: 0.8456
+  roc_auc: 0.9136
+
+random_forest_classifier
+  accuracy: 0.8768
+  macro_f1: 0.8529
+  roc_auc: 0.9423

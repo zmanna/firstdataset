@@ -1,0 +1,32 @@
+{
+  "dataset_name": "qsar_biodegradation",
+  "dataset_version": "v1",
+  "created_at_utc": "2026-03-10T21:58:35.014457+00:00",
+  "source_path": "/Users/mannz/Desktop/polymer degredation/firstdataset/data/qsarbiodegradation/qsar-biodeg.csv",
+  "curated_path": "/Users/mannz/Desktop/polymer degredation/firstdataset/data/processed/qsar_biodegradation_curated.csv",
+  "row_count": 1055,
+  "feature_count": 41,
+  "target_column": "biodegradation_class_id",
+  "target_labels": {
+    "1": "not_readily_biodegradable",
+    "2": "readily_biodegradable"
+  },
+  "missing_values": 0,
+  "representation_status": {
+    "bigsmiles_available": false,
+    "polymer_identity_available": false,
+    "descriptor_columns_available": true
+  },
+  "metadata_decisions": [
+    "Mapped source columns V1..V41 to the published molecular descriptor names from the QSAR biodegradation dataset documentation.",
+    "Added a stable sample_id column for row-level traceability in analysis and reporting.",
+    "Kept original class IDs and added human-readable label columns.",
+    "Retained all rows because the downloaded file contains no missing values.",
+    "Recorded that polymer structures and BigSMILES strings are absent from the source dataset."
+  ],
+  "limitations": [
+    "This is not a polymer-specific dataset.",
+    "No molecular strings, polymer names, or BigSMILES representations are present.",
+    "The target is binary class membership, not a continuous degradation rate constant."
+  ]
+}

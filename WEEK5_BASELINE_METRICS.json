@@ -1,0 +1,26 @@
+{
+  "created_at_utc": "2026-03-10T21:42:34.806835+00:00",
+  "dataset": "qsar_biodegradation",
+  "task_type": "classification",
+  "deliverable_gap": "Requested regression on degradation-rate constants is blocked because the current dataset only provides a binary class label.",
+  "models": [
+    {
+      "model_name": "logistic_regression",
+      "task_type": "classification",
+      "metrics": {
+        "accuracy": 0.8625592417061612,
+        "macro_f1": 0.8455616970798314,
+        "roc_auc": 0.9135814889336016
+      }
+    },
+    {
+      "model_name": "random_forest_classifier",
+      "task_type": "classification",
+      "metrics": {
+        "accuracy": 0.8767772511848341,
+        "macro_f1": 0.8529064779064779,
+        "roc_auc": 0.9422535211267606
+      }
+    }
+  ]
+}

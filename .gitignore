@@ -1,0 +1,9 @@
+.DS_Store
+.kaggle/
+.venv/
+__pycache__/
+*.pyc
+
+# Local generated examples
+synthetic_regression_example.csv
+regression_scores_example.json

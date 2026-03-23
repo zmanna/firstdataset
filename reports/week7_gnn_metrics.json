@@ -1,0 +1,62 @@
+{
+  "created_at_utc": "2026-03-23T23:21:03.603663+00:00",
+  "dataset": "qsar_biodegradation",
+  "task_type": "classification",
+  "prototype_scope": "Descriptor-graph GNN prototype adapted to the available descriptor dataset.",
+  "baselines": [
+    {
+      "model_name": "logistic_regression",
+      "metrics": {
+        "accuracy": 0.8625592417061612,
+        "macro_f1": 0.8455616970798314,
+        "roc_auc": 0.9135814889336016
+      }
+    },
+    {
+      "model_name": "random_forest_classifier",
+      "metrics": {
+        "accuracy": 0.8767772511848341,
+        "macro_f1": 0.8529064779064779,
+        "roc_auc": 0.9422535211267606
+      }
+    }
+  ],
+  "fnn": {
+    "model_name": "feedforward_neural_network",
+    "metrics": {
+      "accuracy": 0.8246445497630331,
+      "precision": 0.765625,
+      "recall": 0.6901408450704225,
+      "f1_score": 0.725925925925926,
+      "roc_auc": 0.9025150905432596
+    }
+  },
+  "week7_gnn": {
+    "model_name": "descriptor_graph_neural_network_prototype",
+    "metrics": {
+      "accuracy": 0.6966824644549763,
+      "precision": 0.5660377358490566,
+      "recall": 0.4225352112676056,
+      "f1_score": 0.4838709677419355,
+      "roc_auc": 0.7689134808853119
+    },
+    "confusion_matrix_labels": [
+      "NRB",
+      "RB"
+    ],
+    "confusion_matrix": [
+      [
+        117,
+        23
+      ],
+      [
+        41,
+        30
+      ]
+    ],
+    "graph_info": {
+      "num_nodes": 41,
+      "top_k_neighbors": 4
+    }
+  }
+}

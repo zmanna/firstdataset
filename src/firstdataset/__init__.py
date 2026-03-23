@@ -16,6 +16,7 @@ from .modeling import (
     run_regression_baselines,
     run_regression_baselines_from_csv,
 )
+from .week7_gnn import Week7Result, run_week7_descriptor_graph_prototype
 
 __all__ = [
     "CURATED_DATA_PATH",
@@ -29,7 +30,9 @@ __all__ = [
     "run_qsar_fnn_classifier",
     "run_regression_baselines",
     "run_regression_baselines_from_csv",
+    "run_week7_descriptor_graph_prototype",
     "split_qsar_biodegradation",
     "split_tabular_regression_dataset",
     "standardize_qsar_columns",
+    "Week7Result",
 ]

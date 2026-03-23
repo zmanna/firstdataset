@@ -1,0 +1,40 @@
+Week 7 GNN Prototype Results
+
+Dataset: QSAR biodegradation
+Prototype: descriptor-graph message-passing network
+Note: this is an adapted graph prototype because the current dataset has descriptor vectors, not polymer atom/bond graphs.
+
+Week 5 baselines:
+logistic_regression
+  accuracy: 0.8626
+  macro_f1: 0.8456
+  roc_auc: 0.9136
+
+random_forest_classifier
+  accuracy: 0.8768
+  macro_f1: 0.8529
+  roc_auc: 0.9423
+
+Week 6 FNN:
+feedforward_neural_network
+  accuracy: 0.8246
+  precision: 0.7656
+  recall: 0.6901
+  f1_score: 0.7259
+  roc_auc: 0.9025
+
+Week 7 graph prototype:
+descriptor_graph_neural_network_prototype
+  accuracy: 0.6967
+  precision: 0.5660
+  recall: 0.4225
+  f1_score: 0.4839
+  roc_auc: 0.7689
+
+Confusion matrix (rows=true [NRB, RB], cols=predicted [NRB, RB]):
+  [117, 23]
+  [41, 30]
+
+Graph info:
+  num_nodes: 41
+  top_k_neighbors: 4

@@ -17,6 +17,7 @@ from .modeling import (
     run_regression_baselines_from_csv,
 )
 from .week7_gnn import Week7Result, run_week7_descriptor_graph_prototype
+from .week8_validation import Week8FoldResult, run_cross_environment_validation, write_week8_charts
 
 __all__ = [
     "CURATED_DATA_PATH",
@@ -31,8 +32,11 @@ __all__ = [
     "run_regression_baselines",
     "run_regression_baselines_from_csv",
     "run_week7_descriptor_graph_prototype",
+    "run_cross_environment_validation",
     "split_qsar_biodegradation",
     "split_tabular_regression_dataset",
     "standardize_qsar_columns",
     "Week7Result",
+    "Week8FoldResult",
+    "write_week8_charts",
 ]

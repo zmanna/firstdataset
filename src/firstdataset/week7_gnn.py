@@ -128,15 +128,14 @@ class DescriptorGraphNetwork:
         return (probabilities >= 0.5).astype(int)
 
 
-def run_week7_descriptor_graph_prototype(random_state: int = 42) -> Week7Result:
-    split = split_qsar_biodegradation(random_state=random_state, target_as_category=False)
-    y_train = (split.y_train == 2).astype(int).to_numpy()
-    y_test = (split.y_test == 2).astype(int).to_numpy()
-
-    scaler = StandardScaler()
-    X_train = scaler.fit_transform(split.X_train)
-    X_test = scaler.transform(split.X_test)
-
+def run_descriptor_graph_prototype_on_split(
+    X_train: np.ndarray,
+    X_test: np.ndarray,
+    y_train: np.ndarray,
+    y_test: np.ndarray,
+    *,
+    random_state: int = 42,
+) -> Week7Result:
     X_train_inner, X_val, y_train_inner, y_val = train_test_split(
         X_train,
         y_train,
@@ -167,10 +166,11 @@ def run_week7_descriptor_graph_prototype(random_state: int = 42) -> Week7Result:
 
     metrics = {
         "accuracy": float(accuracy_score(y_test, predictions)),
-        "precision": float(precision_score(y_test, predictions, pos_label=1)),
-        "recall": float(recall_score(y_test, predictions, pos_label=1)),
-        "f1_score": float(f1_score(y_test, predictions, pos_label=1)),
+        "precision": float(precision_score(y_test, predictions, pos_label=1, zero_division=0)),
+        "recall": float(recall_score(y_test, predictions, pos_label=1, zero_division=0)),
+        "f1_score": float(f1_score(y_test, predictions, pos_label=1, zero_division=0)),
         "roc_auc": float(roc_auc_score(y_test, probabilities)),
+        "rb_recall": float(recall_score(y_test, predictions, pos_label=1, zero_division=0)),
     }
     matrix = confusion_matrix(y_test, predictions, labels=[0, 1]).tolist()
     graph_info = {
@@ -182,4 +182,22 @@ def run_week7_descriptor_graph_prototype(random_state: int = 42) -> Week7Result:
         metrics=metrics,
         confusion_matrix=matrix,
         graph_info=graph_info,
+    )
+
+
+def run_week7_descriptor_graph_prototype(random_state: int = 42) -> Week7Result:
+    split = split_qsar_biodegradation(random_state=random_state, target_as_category=False)
+    y_train = (split.y_train == 2).astype(int).to_numpy()
+    y_test = (split.y_test == 2).astype(int).to_numpy()
+
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(split.X_train)
+    X_test = scaler.transform(split.X_test)
+
+    return run_descriptor_graph_prototype_on_split(
+        X_train,
+        X_test,
+        y_train,
+        y_test,
+        random_state=random_state,
     )

@@ -104,9 +104,9 @@ def run_qsar_fnn_classifier(random_state: int = 42) -> ClassificationResult:
 
     metrics = {
         "accuracy": float(accuracy_score(y_test, predictions)),
-        "precision": float(precision_score(y_test, predictions, pos_label=1)),
-        "recall": float(recall_score(y_test, predictions, pos_label=1)),
-        "f1_score": float(f1_score(y_test, predictions, pos_label=1)),
+        "precision": float(precision_score(y_test, predictions, pos_label=1, zero_division=0)),
+        "recall": float(recall_score(y_test, predictions, pos_label=1, zero_division=0)),
+        "f1_score": float(f1_score(y_test, predictions, pos_label=1, zero_division=0)),
         "roc_auc": float(roc_auc_score(y_test, probabilities[:, positive_index])),
     }
     matrix = confusion_matrix(y_test, predictions, labels=[0, 1]).tolist()

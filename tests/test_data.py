@@ -18,6 +18,7 @@ from firstdataset.data import (
 from firstdataset.modeling import run_regression_baselines_from_csv
 from firstdataset.modeling import run_qsar_fnn_classifier
 from firstdataset.week7_gnn import run_week7_descriptor_graph_prototype
+from firstdataset.week8_validation import run_cross_environment_validation
 
 
 class QSARDataTests(unittest.TestCase):
@@ -88,6 +89,13 @@ class QSARDataTests(unittest.TestCase):
         self.assertEqual(set(result.metrics), {"accuracy", "precision", "recall", "f1_score", "roc_auc"})
         self.assertEqual(result.graph_info["num_nodes"], 41)
         self.assertEqual(len(result.confusion_matrix), 2)
+
+    def test_week8_cross_environment_validation(self) -> None:
+        results, summary = run_cross_environment_validation(random_state=42)
+        self.assertEqual(len(results), 12)
+        self.assertEqual(summary.shape[0], 12)
+        self.assertIn("model_name", summary.columns)
+        self.assertIn("rb_recall", summary.columns)
 
 
 if __name__ == "__main__":

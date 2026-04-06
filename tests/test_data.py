@@ -19,6 +19,7 @@ from firstdataset.modeling import run_regression_baselines_from_csv
 from firstdataset.modeling import run_qsar_fnn_classifier
 from firstdataset.week7_gnn import run_week7_descriptor_graph_prototype
 from firstdataset.week8_validation import run_cross_environment_validation
+from firstdataset.week9_validation import apply_smote, run_week9_validation
 
 
 class QSARDataTests(unittest.TestCase):
@@ -86,7 +87,7 @@ class QSARDataTests(unittest.TestCase):
     def test_week7_descriptor_graph_prototype(self) -> None:
         result = run_week7_descriptor_graph_prototype(random_state=42)
         self.assertEqual(result.model_name, "descriptor_graph_neural_network_prototype")
-        self.assertEqual(set(result.metrics), {"accuracy", "precision", "recall", "f1_score", "roc_auc"})
+        self.assertEqual(set(result.metrics), {"accuracy", "precision", "recall", "f1_score", "roc_auc", "rb_recall"})
         self.assertEqual(result.graph_info["num_nodes"], 41)
         self.assertEqual(len(result.confusion_matrix), 2)
 
@@ -96,6 +97,20 @@ class QSARDataTests(unittest.TestCase):
         self.assertEqual(summary.shape[0], 12)
         self.assertIn("model_name", summary.columns)
         self.assertIn("rb_recall", summary.columns)
+
+    def test_apply_smote_balances_training_data(self) -> None:
+        X = np.array([[0.0], [1.0], [2.0], [10.0], [11.0], [12.0]], dtype=float)
+        y = np.array([0, 0, 0, 1, 1, 1], dtype=int)
+        X_res, y_res = apply_smote(X, y, random_state=42)
+        self.assertEqual(X_res.shape[0], 6)
+        self.assertEqual(np.bincount(y_res).tolist(), [3, 3])
+
+    def test_week9_validation_shapes(self) -> None:
+        diagnostics, results = run_week9_validation(random_state=42)
+        self.assertEqual(diagnostics.shape[0], 5)
+        self.assertEqual(results.shape[0], 30)
+        self.assertIn("sampling", results.columns)
+        self.assertIn("rb_recall", results.columns)
 
 
 if __name__ == "__main__":

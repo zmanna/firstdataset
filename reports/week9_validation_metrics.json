@@ -1,0 +1,69 @@
+{
+  "created_at_utc": "2026-04-06T01:38:00.453866+00:00",
+  "dataset": "qsar_biodegradation",
+  "validation_type": "5_fold_stratified_cross_validation",
+  "diagnostics_csv": "/Users/mannz/Desktop/polymer degredation/firstdataset/reports/week9_fold_diagnostics.csv",
+  "results_csv": "/Users/mannz/Desktop/polymer degredation/firstdataset/reports/week9_model_results.csv",
+  "summary": [
+    {
+      "sampling": "baseline",
+      "model_name": "feedforward_neural_network",
+      "accuracy": 0.8587677725118483,
+      "precision": 0.7929446019437114,
+      "recall": 0.7894757433489829,
+      "f1_score": 0.7904853206664522,
+      "roc_auc": 0.9233867232169999,
+      "rb_recall": 0.7894757433489829
+    },
+    {
+      "sampling": "baseline",
+      "model_name": "logistic_regression",
+      "accuracy": 0.8701421800947868,
+      "precision": 0.8180683042447748,
+      "recall": 0.7922143974960877,
+      "f1_score": 0.804620653911341,
+      "roc_auc": 0.9276146728492456,
+      "rb_recall": 0.7922143974960877
+    },
+    {
+      "sampling": "baseline",
+      "model_name": "random_forest_classifier",
+      "accuracy": 0.871090047393365,
+      "precision": 0.8502062909327585,
+      "recall": 0.7501173708920188,
+      "f1_score": 0.7968863334807608,
+      "roc_auc": 0.9364231753430253,
+      "rb_recall": 0.7501173708920188
+    },
+    {
+      "sampling": "smote",
+      "model_name": "feedforward_neural_network",
+      "accuracy": 0.8729857819905213,
+      "precision": 0.8128685111130018,
+      "recall": 0.8145148669796557,
+      "f1_score": 0.8125625631242285,
+      "roc_auc": 0.9289382658862848,
+      "rb_recall": 0.8145148669796557
+    },
+    {
+      "sampling": "smote",
+      "model_name": "logistic_regression",
+      "accuracy": 0.8606635071090046,
+      "precision": 0.7619089101858212,
+      "recall": 0.8568075117370892,
+      "f1_score": 0.8061109442824712,
+      "roc_auc": 0.924659797313055,
+      "rb_recall": 0.8568075117370892
+    },
+    {
+      "sampling": "smote",
+      "model_name": "random_forest_classifier",
+      "accuracy": 0.8739336492890996,
+      "precision": 0.832953735842163,
+      "recall": 0.7836854460093897,
+      "f1_score": 0.8072903298435212,
+      "roc_auc": 0.9368811670985144,
+      "rb_recall": 0.7836854460093897
+    }
+  ]
+}

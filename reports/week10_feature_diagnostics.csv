@@ -1,0 +1,11 @@
+fold_id,train_size,test_size,train_nrb,train_rb,test_nrb,test_rb,feature_set
+1,844,211,560,284,139,72,tier1_baseline
+2,844,211,559,285,140,71,tier1_baseline
+3,844,211,559,285,140,71,tier1_baseline
+4,844,211,559,285,140,71,tier1_baseline
+5,844,211,559,285,140,71,tier1_baseline
+1,844,211,560,284,139,72,tier1_plus_tier2
+2,844,211,559,285,140,71,tier1_plus_tier2
+3,844,211,559,285,140,71,tier1_plus_tier2
+4,844,211,559,285,140,71,tier1_plus_tier2
+5,844,211,559,285,140,71,tier1_plus_tier2

@@ -58,11 +58,12 @@ def _evaluate_binary(y_true: np.ndarray, y_pred: np.ndarray, y_score: np.ndarray
     return metrics, matrix
 
 
-def run_week9_validation(*, random_state: int = 42) -> tuple[pd.DataFrame, pd.DataFrame]:
-    bundle = load_qsar_biodegradation(target_as_category=False)
-    X = bundle.X.to_numpy(dtype=np.float64)
-    y = (bundle.y.to_numpy(dtype=np.int64) == 2).astype(int)
-
+def run_week9_validation_for_arrays(
+    X: np.ndarray,
+    y: np.ndarray,
+    *,
+    random_state: int = 42,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
     skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=random_state)
     diagnostics_rows: list[dict[str, int]] = []
     result_rows: list[dict[str, float | int | str]] = []
@@ -133,3 +134,10 @@ def run_week9_validation(*, random_state: int = 42) -> tuple[pd.DataFrame, pd.Da
                 result_rows.append(row)
 
     return pd.DataFrame(diagnostics_rows), pd.DataFrame(result_rows)
+
+
+def run_week9_validation(*, random_state: int = 42) -> tuple[pd.DataFrame, pd.DataFrame]:
+    bundle = load_qsar_biodegradation(target_as_category=False)
+    X = bundle.X.to_numpy(dtype=np.float64)
+    y = (bundle.y.to_numpy(dtype=np.int64) == 2).astype(int)
+    return run_week9_validation_for_arrays(X, y, random_state=random_state)

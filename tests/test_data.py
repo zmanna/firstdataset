@@ -20,6 +20,7 @@ from firstdataset.modeling import run_qsar_fnn_classifier
 from firstdataset.week7_gnn import run_week7_descriptor_graph_prototype
 from firstdataset.week8_validation import run_cross_environment_validation
 from firstdataset.week9_validation import apply_smote, run_week9_validation
+from firstdataset.week10_features import build_tier2_proxy_features, build_week10_feature_bundle, run_week10_feature_evaluation
 
 
 class QSARDataTests(unittest.TestCase):
@@ -111,6 +112,18 @@ class QSARDataTests(unittest.TestCase):
         self.assertEqual(results.shape[0], 30)
         self.assertIn("sampling", results.columns)
         self.assertIn("rb_recall", results.columns)
+
+    def test_week10_proxy_feature_building(self) -> None:
+        bundle = build_week10_feature_bundle()
+        proxy = build_tier2_proxy_features(bundle.baseline_X)
+        self.assertEqual(proxy.shape[1], 12)
+        self.assertEqual(bundle.enhanced_X.shape[1], bundle.baseline_X.shape[1] + 12)
+
+    def test_week10_feature_evaluation_shapes(self) -> None:
+        diagnostics, results = run_week10_feature_evaluation(random_state=42)
+        self.assertEqual(diagnostics.shape[0], 10)
+        self.assertEqual(results.shape[0], 60)
+        self.assertIn("feature_set", results.columns)
 
 
 if __name__ == "__main__":

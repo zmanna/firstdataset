@@ -1,0 +1,129 @@
+Week 10 Feature Engineering Summary
+
+Objective: compare the existing descriptor baseline against a chemistry-aware proxy feature expansion.
+
+Tier 1 baseline features:
+  41 original descriptors
+
+Tier 2 proxy features added:
+  - heteroatom_total
+  - heteroatom_fraction
+  - halogen_presence
+  - aromatic_substitution_signal
+  - donor_acceptor_proxy
+  - donor_density
+  - polarity_proxy
+  - mass_topology_proxy
+  - ring_topology_proxy
+  - carbon_hetero_ratio_proxy
+  - nitro_ester_signal
+  - electronic_balance_proxy
+
+Tier 3 future quantum-style features planned:
+  - total_energy
+  - dipole_moment
+  - polarizability
+  - HOMO_energy
+  - LUMO_energy
+  - HOMO_LUMO_gap
+  - quadrupole_moment
+  - partial_charge_dispersion
+
+Mean metrics by feature set, sampling, and model:
+tier1_baseline | baseline | feedforward_neural_network
+  accuracy: 0.8588
+  precision: 0.7929
+  recall: 0.7895
+  f1_score: 0.7905
+  roc_auc: 0.9234
+  rb_recall: 0.7895
+
+tier1_baseline | baseline | logistic_regression
+  accuracy: 0.8701
+  precision: 0.8181
+  recall: 0.7922
+  f1_score: 0.8046
+  roc_auc: 0.9276
+  rb_recall: 0.7922
+
+tier1_baseline | baseline | random_forest_classifier
+  accuracy: 0.8711
+  precision: 0.8502
+  recall: 0.7501
+  f1_score: 0.7969
+  roc_auc: 0.9364
+  rb_recall: 0.7501
+
+tier1_baseline | smote | feedforward_neural_network
+  accuracy: 0.8730
+  precision: 0.8129
+  recall: 0.8145
+  f1_score: 0.8126
+  roc_auc: 0.9289
+  rb_recall: 0.8145
+
+tier1_baseline | smote | logistic_regression
+  accuracy: 0.8607
+  precision: 0.7619
+  recall: 0.8568
+  f1_score: 0.8061
+  roc_auc: 0.9247
+  rb_recall: 0.8568
+
+tier1_baseline | smote | random_forest_classifier
+  accuracy: 0.8739
+  precision: 0.8330
+  recall: 0.7837
+  f1_score: 0.8073
+  roc_auc: 0.9369
+  rb_recall: 0.7837
+
+tier1_plus_tier2 | baseline | feedforward_neural_network
+  accuracy: 0.8626
+  precision: 0.8140
+  recall: 0.7725
+  f1_score: 0.7913
+  roc_auc: 0.9194
+  rb_recall: 0.7725
+
+tier1_plus_tier2 | baseline | logistic_regression
+  accuracy: 0.8730
+  precision: 0.8198
+  recall: 0.8007
+  f1_score: 0.8097
+  roc_auc: 0.9254
+  rb_recall: 0.8007
+
+tier1_plus_tier2 | baseline | random_forest_classifier
+  accuracy: 0.8711
+  precision: 0.8485
+  recall: 0.7529
+  f1_score: 0.7976
+  roc_auc: 0.9345
+  rb_recall: 0.7529
+
+tier1_plus_tier2 | smote | feedforward_neural_network
+  accuracy: 0.8758
+  precision: 0.8031
+  recall: 0.8399
+  f1_score: 0.8204
+  roc_auc: 0.9293
+  rb_recall: 0.8399
+
+tier1_plus_tier2 | smote | logistic_regression
+  accuracy: 0.8597
+  precision: 0.7636
+  recall: 0.8512
+  f1_score: 0.8043
+  roc_auc: 0.9228
+  rb_recall: 0.8512
+
+tier1_plus_tier2 | smote | random_forest_classifier
+  accuracy: 0.8739
+  precision: 0.8336
+  recall: 0.7837
+  f1_score: 0.8075
+  roc_auc: 0.9367
+  rb_recall: 0.7837
+
+Chart: /Users/mannz/Desktop/polymer degredation/firstdataset/reports/week10_feature_comparison.png

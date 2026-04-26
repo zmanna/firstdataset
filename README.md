@@ -15,12 +15,14 @@ source "/Users/mannz/Desktop/polymer degredation/firstdataset/activate-project.s
 - `src/firstdataset/week8_validation.py`: cross-environment validation helpers
 - `src/firstdataset/week9_validation.py`: 5-fold stratified validation with SMOTE support
 - `src/firstdataset/week10_features.py`: Week 10 feature engineering tiers and evaluation
+- `src/firstdataset/week11_analysis.py`: Week 11 feature importance and selection
 - `scripts/run_regression_baselines.py`: generic regression runner for any CSV with a numeric target
 - `scripts/train_week6_fnn.py`: Week 6 feedforward neural network run
 - `scripts/train_week7_gnn.py`: Week 7 descriptor-graph prototype run
 - `scripts/run_week8_cross_environment.py`: Week 8 proxy environment validation
 - `scripts/run_week9_validation.py`: Week 9 validation and imbalance comparison
 - `scripts/run_week10_feature_engineering.py`: Week 10 feature engineering comparison
+- `scripts/run_week11_feature_analysis.py`: Week 11 feature importance and selection
 
 ## Run regression baselines
 
@@ -60,3 +62,21 @@ This writes:
 - `reports/week10_feature_results.csv`
 - `reports/week10_feature_comparison.png`
 - `WEEK10_FEATURE_ENGINEERING_SUMMARY.txt`
+
+## Run Week 11 feature analysis
+
+```sh
+PYTHONPATH="/Users/mannz/Desktop/polymer degredation/firstdataset/src" \
+MPLBACKEND=Agg MPLCONFIGDIR="/tmp/matplotlib-week11" \
+python "/Users/mannz/Desktop/polymer degredation/firstdataset/scripts/run_week11_feature_analysis.py"
+```
+
+This writes:
+
+- `reports/week11_feature_rankings.csv`
+- `reports/week11_feature_set_results.csv`
+- `reports/week11_feature_set_diagnostics.csv`
+- `reports/week11_feature_set_generalization.csv`
+- `reports/week11_feature_sets.json`
+- `reports/week11_charts/`
+- `WEEK11_FEATURE_ANALYSIS_SUMMARY.txt`

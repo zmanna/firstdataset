@@ -1,0 +1,242 @@
+Week 11 Feature Importance and Selection Summary
+
+Top ranked features:
+  - SpMax_B_m | rf=0.0863 | perm=0.0057 | mi=0.1771
+  - SpMax_L | rf=0.0660 | perm=0.0031 | mi=0.1354
+  - SM6_B_m | rf=0.0504 | perm=0.0052 | mi=0.1056
+  - SpPosA_B_p | rf=0.0600 | perm=0.0015 | mi=0.1405
+  - mass_topology_proxy | rf=0.0407 | perm=0.0018 | mi=0.0847
+  - Psi_i_A | rf=0.0228 | perm=0.0050 | mi=0.0639
+  - SM6_L | rf=0.0312 | perm=0.0012 | mi=0.1185
+  - F02_C_N | rf=0.0307 | perm=0.0022 | mi=0.0552
+  - SdssC | rf=0.0258 | perm=0.0032 | mi=0.0531
+  - SpMax_A | rf=0.0572 | perm=0.0001 | mi=0.1215
+  - polarity_proxy | rf=0.0317 | perm=0.0000 | mi=0.1451
+  - HyWi_B_m | rf=0.0303 | perm=0.0010 | mi=0.0771
+  - Mi | rf=0.0243 | perm=0.0025 | mi=0.0537
+  - nN | rf=0.0287 | perm=0.0046 | mi=0.0272
+  - LOC | rf=0.0226 | perm=0.0006 | mi=0.1012
+
+Feature sets evaluated:
+  full_enhanced (53 features)
+  top_ranked (15 features)
+  proxy_only (12 features)
+  reduced_hybrid (12 features)
+
+Cross-environment Random Forest summary by feature set:
+full_enhanced
+  cross_env_rf_accuracy: 0.5001
+  cross_env_rf_roc_auc: 0.5111
+  cross_env_rf_rb_recall: 0.3733
+
+top_ranked
+  cross_env_rf_accuracy: 0.5318
+  cross_env_rf_roc_auc: 0.4465
+  cross_env_rf_rb_recall: 0.2906
+
+proxy_only
+  cross_env_rf_accuracy: 0.2730
+  cross_env_rf_roc_auc: 0.0894
+  cross_env_rf_rb_recall: 0.0347
+
+reduced_hybrid
+  cross_env_rf_accuracy: 0.2556
+  cross_env_rf_roc_auc: 0.1687
+  cross_env_rf_rb_recall: 0.1616
+
+Mean metrics by feature set, sampling, and model:
+full_enhanced | baseline | feedforward_neural_network
+  accuracy: 0.8626
+  precision: 0.8140
+  recall: 0.7725
+  f1_score: 0.7913
+  roc_auc: 0.9194
+  rb_recall: 0.7725
+
+full_enhanced | baseline | logistic_regression
+  accuracy: 0.8730
+  precision: 0.8198
+  recall: 0.8007
+  f1_score: 0.8097
+  roc_auc: 0.9254
+  rb_recall: 0.8007
+
+full_enhanced | baseline | random_forest_classifier
+  accuracy: 0.8711
+  precision: 0.8485
+  recall: 0.7529
+  f1_score: 0.7976
+  roc_auc: 0.9345
+  rb_recall: 0.7529
+
+full_enhanced | smote | feedforward_neural_network
+  accuracy: 0.8758
+  precision: 0.8031
+  recall: 0.8399
+  f1_score: 0.8204
+  roc_auc: 0.9293
+  rb_recall: 0.8399
+
+full_enhanced | smote | logistic_regression
+  accuracy: 0.8597
+  precision: 0.7636
+  recall: 0.8512
+  f1_score: 0.8043
+  roc_auc: 0.9228
+  rb_recall: 0.8512
+
+full_enhanced | smote | random_forest_classifier
+  accuracy: 0.8739
+  precision: 0.8336
+  recall: 0.7837
+  f1_score: 0.8075
+  roc_auc: 0.9367
+  rb_recall: 0.7837
+
+proxy_only | baseline | feedforward_neural_network
+  accuracy: 0.8133
+  precision: 0.7104
+  recall: 0.7810
+  f1_score: 0.7407
+  roc_auc: 0.8820
+  rb_recall: 0.7810
+
+proxy_only | baseline | logistic_regression
+  accuracy: 0.7469
+  precision: 0.6360
+  recall: 0.6067
+  f1_score: 0.6191
+  roc_auc: 0.8230
+  rb_recall: 0.6067
+
+proxy_only | baseline | random_forest_classifier
+  accuracy: 0.8256
+  precision: 0.7723
+  recall: 0.6881
+  f1_score: 0.7269
+  roc_auc: 0.8921
+  rb_recall: 0.6881
+
+proxy_only | smote | feedforward_neural_network
+  accuracy: 0.8114
+  precision: 0.6903
+  recall: 0.8061
+  f1_score: 0.7433
+  roc_auc: 0.8830
+  rb_recall: 0.8061
+
+proxy_only | smote | logistic_regression
+  accuracy: 0.7308
+  precision: 0.5760
+  recall: 0.7977
+  f1_score: 0.6680
+  roc_auc: 0.8240
+  rb_recall: 0.7977
+
+proxy_only | smote | random_forest_classifier
+  accuracy: 0.8199
+  precision: 0.7233
+  recall: 0.7640
+  f1_score: 0.7416
+  roc_auc: 0.8919
+  rb_recall: 0.7640
+
+reduced_hybrid | baseline | feedforward_neural_network
+  accuracy: 0.8654
+  precision: 0.8293
+  recall: 0.7586
+  f1_score: 0.7915
+  roc_auc: 0.9126
+  rb_recall: 0.7586
+
+reduced_hybrid | baseline | logistic_regression
+  accuracy: 0.8209
+  precision: 0.7712
+  recall: 0.6716
+  f1_score: 0.7162
+  roc_auc: 0.8786
+  rb_recall: 0.6716
+
+reduced_hybrid | baseline | random_forest_classifier
+  accuracy: 0.8607
+  precision: 0.8119
+  recall: 0.7642
+  f1_score: 0.7871
+  roc_auc: 0.9184
+  rb_recall: 0.7642
+
+reduced_hybrid | smote | feedforward_neural_network
+  accuracy: 0.8607
+  precision: 0.7920
+  recall: 0.8061
+  f1_score: 0.7963
+  roc_auc: 0.9027
+  rb_recall: 0.8061
+
+reduced_hybrid | smote | logistic_regression
+  accuracy: 0.8047
+  precision: 0.6781
+  recall: 0.8035
+  f1_score: 0.7349
+  roc_auc: 0.8775
+  rb_recall: 0.8035
+
+reduced_hybrid | smote | random_forest_classifier
+  accuracy: 0.8597
+  precision: 0.7842
+  recall: 0.8063
+  f1_score: 0.7947
+  roc_auc: 0.9190
+  rb_recall: 0.8063
+
+top_ranked | baseline | feedforward_neural_network
+  accuracy: 0.8578
+  precision: 0.8181
+  recall: 0.7471
+  f1_score: 0.7782
+  roc_auc: 0.9153
+  rb_recall: 0.7471
+
+top_ranked | baseline | logistic_regression
+  accuracy: 0.8474
+  precision: 0.8033
+  recall: 0.7306
+  f1_score: 0.7631
+  roc_auc: 0.9023
+  rb_recall: 0.7306
+
+top_ranked | baseline | random_forest_classifier
+  accuracy: 0.8626
+  precision: 0.8195
+  recall: 0.7613
+  f1_score: 0.7889
+  roc_auc: 0.9264
+  rb_recall: 0.7613
+
+top_ranked | smote | feedforward_neural_network
+  accuracy: 0.8616
+  precision: 0.7951
+  recall: 0.8032
+  f1_score: 0.7972
+  roc_auc: 0.9163
+  rb_recall: 0.8032
+
+top_ranked | smote | logistic_regression
+  accuracy: 0.8332
+  precision: 0.7210
+  recall: 0.8317
+  f1_score: 0.7708
+  roc_auc: 0.9025
+  rb_recall: 0.8317
+
+top_ranked | smote | random_forest_classifier
+  accuracy: 0.8673
+  precision: 0.8069
+  recall: 0.7978
+  f1_score: 0.8022
+  roc_auc: 0.9264
+  rb_recall: 0.7978
+
+Charts:
+  /Users/mannz/Desktop/polymer degredation/firstdataset/reports/week11_charts/week11_top_feature_importance.png
+  /Users/mannz/Desktop/polymer degredation/firstdataset/reports/week11_charts/week11_feature_set_comparison.png

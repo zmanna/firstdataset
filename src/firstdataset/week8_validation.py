@@ -67,15 +67,13 @@ def _fit_and_eval_sklearn_model(
     return _evaluate_binary_predictions(y_test, predictions, scores)
 
 
-def run_cross_environment_validation(
+def run_cross_environment_validation_for_arrays(
+    X: np.ndarray,
+    y: np.ndarray,
     *,
     n_environments: int = 3,
     random_state: int = 42,
 ) -> tuple[list[Week8FoldResult], pd.DataFrame]:
-    bundle = load_qsar_biodegradation(target_as_category=False)
-    X = bundle.X.to_numpy(dtype=np.float64)
-    y = (bundle.y.to_numpy(dtype=np.int64) == 2).astype(int)
-
     environment_labels = _build_proxy_environments(X, y, n_environments, random_state)
 
     results: list[Week8FoldResult] = []
@@ -178,6 +176,22 @@ def run_cross_environment_validation(
         rows.append(row)
     summary = pd.DataFrame(rows)
     return results, summary
+
+
+def run_cross_environment_validation(
+    *,
+    n_environments: int = 3,
+    random_state: int = 42,
+) -> tuple[list[Week8FoldResult], pd.DataFrame]:
+    bundle = load_qsar_biodegradation(target_as_category=False)
+    X = bundle.X.to_numpy(dtype=np.float64)
+    y = (bundle.y.to_numpy(dtype=np.int64) == 2).astype(int)
+    return run_cross_environment_validation_for_arrays(
+        X,
+        y,
+        n_environments=n_environments,
+        random_state=random_state,
+    )
 
 
 def write_week8_charts(summary: pd.DataFrame, output_dir: str | Path) -> list[Path]:

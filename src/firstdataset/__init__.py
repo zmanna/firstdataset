@@ -28,6 +28,13 @@ from .week10_features import (
     run_week10_feature_evaluation,
     write_week10_chart,
 )
+from .week11_analysis import (
+    Week11FeatureSets,
+    build_week11_feature_sets,
+    compute_feature_rankings,
+    evaluate_feature_sets,
+    write_week11_charts,
+)
 
 __all__ = [
     "CURATED_DATA_PATH",
@@ -36,11 +43,14 @@ __all__ = [
     "build_curated_qsar_dataset",
     "ClassificationResult",
     "FoldDiagnostics",
+    "build_week11_feature_sets",
     "build_tier2_proxy_features",
     "build_week10_feature_bundle",
     "load_qsar_biodegradation",
     "load_tabular_regression_dataset",
     "apply_smote",
+    "compute_feature_rankings",
+    "evaluate_feature_sets",
     "run_qsar_classification_baselines",
     "run_qsar_fnn_classifier",
     "run_regression_baselines",
@@ -57,6 +67,8 @@ __all__ = [
     "TIER3_FUTURE_QUANTUM_FEATURES",
     "Week7Result",
     "Week8FoldResult",
+    "Week11FeatureSets",
     "write_week8_charts",
     "write_week10_chart",
+    "write_week11_charts",
 ]

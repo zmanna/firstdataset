@@ -21,6 +21,7 @@ from firstdataset.week7_gnn import run_week7_descriptor_graph_prototype
 from firstdataset.week8_validation import run_cross_environment_validation
 from firstdataset.week9_validation import apply_smote, run_week9_validation
 from firstdataset.week10_features import build_tier2_proxy_features, build_week10_feature_bundle, run_week10_feature_evaluation
+from firstdataset.week11_analysis import compute_feature_rankings, evaluate_feature_sets
 
 
 class QSARDataTests(unittest.TestCase):
@@ -124,6 +125,19 @@ class QSARDataTests(unittest.TestCase):
         self.assertEqual(diagnostics.shape[0], 10)
         self.assertEqual(results.shape[0], 60)
         self.assertIn("feature_set", results.columns)
+
+    def test_week11_feature_rankings(self) -> None:
+        ranking = compute_feature_rankings(random_state=42)
+        self.assertIn("feature_name", ranking.columns)
+        self.assertIn("combined_rank", ranking.columns)
+        self.assertGreaterEqual(ranking.shape[0], 53)
+
+    def test_week11_feature_evaluation_shapes(self) -> None:
+        diagnostics, results, generalization, feature_sets = evaluate_feature_sets(random_state=42)
+        self.assertEqual(diagnostics["feature_set"].nunique(), 4)
+        self.assertEqual(results["feature_set"].nunique(), 4)
+        self.assertEqual(generalization.shape[0], 4)
+        self.assertGreaterEqual(len(feature_sets.top_ranked), 10)
 
 
 if __name__ == "__main__":

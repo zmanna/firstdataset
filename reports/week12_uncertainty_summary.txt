@@ -1,0 +1,93 @@
+Week 12 Uncertainty and Reliability Summary
+
+Top findings:
+  - Best overall calibrated Random Forest feature set: top_ranked (brier=0.1003, ece=0.0297, log_loss=0.3312)
+  - Highest Random Forest cross-validated accuracy: full_enhanced (accuracy=0.8711, roc_auc=0.9335)
+  - Largest uncertainty gap between wrong and correct Random Forest predictions: full_enhanced (gap=0.1727)
+  - Best Random Forest selective accuracy at 25% coverage: top_ranked (accuracy=0.9773, mean_confidence=0.9778)
+  - Most overconfident cross-environment Random Forest feature set: proxy_only (incorrect_confidence=0.8732, cross_env_accuracy=0.2493)
+
+Random Forest reliability by feature set (stratified CV):
+full_enhanced
+  accuracy: 0.8711
+  roc_auc: 0.9335
+  brier_score: 0.0950
+  log_loss: 0.3464
+  ece: 0.0387
+  mean_uncertainty_correct: 0.1453
+  mean_uncertainty_incorrect: 0.3180
+
+top_ranked
+  accuracy: 0.8626
+  roc_auc: 0.9250
+  brier_score: 0.1003
+  log_loss: 0.3312
+  ece: 0.0297
+  mean_uncertainty_correct: 0.1442
+  mean_uncertainty_incorrect: 0.3113
+
+reduced_hybrid
+  accuracy: 0.8607
+  roc_auc: 0.9163
+  brier_score: 0.1048
+  log_loss: 0.3489
+  ece: 0.0291
+  mean_uncertainty_correct: 0.1475
+  mean_uncertainty_incorrect: 0.2976
+
+proxy_only
+  accuracy: 0.8256
+  roc_auc: 0.8924
+  brier_score: 0.1236
+  log_loss: 0.3922
+  ece: 0.0219
+  mean_uncertainty_correct: 0.1708
+  mean_uncertainty_incorrect: 0.3170
+
+Cross-environment Random Forest reliability:
+top_ranked
+  accuracy: 0.5848
+  brier_score: 0.2998
+  log_loss: 1.2262
+  mean_uncertainty: 0.2139
+  mean_uncertainty_correct: 0.2059
+  mean_uncertainty_incorrect: 0.2252
+  mean_confidence_incorrect: 0.7748
+
+full_enhanced
+  accuracy: 0.4436
+  brier_score: 0.4313
+  log_loss: 2.8870
+  mean_uncertainty: 0.1952
+  mean_uncertainty_correct: 0.2289
+  mean_uncertainty_incorrect: 0.1684
+  mean_confidence_incorrect: 0.8316
+
+reduced_hybrid
+  accuracy: 0.2891
+  brier_score: 0.5012
+  log_loss: 3.1901
+  mean_uncertainty: 0.2196
+  mean_uncertainty_correct: 0.2700
+  mean_uncertainty_incorrect: 0.1991
+  mean_confidence_incorrect: 0.8009
+
+proxy_only
+  accuracy: 0.2493
+  brier_score: 0.6144
+  log_loss: 4.6149
+  mean_uncertainty: 0.1678
+  mean_uncertainty_correct: 0.2914
+  mean_uncertainty_incorrect: 0.1268
+  mean_confidence_incorrect: 0.8732
+
+Plain-language interpretation:
+  - Uncertainty helps most when wrong predictions are noticeably less confident than correct ones. In this run, the strongest separation was for full_enhanced.
+  - The model is easiest to trust when both calibration and selective prediction improve together. Here that points most strongly to top_ranked for calibration and top_ranked when keeping only the most confident predictions.
+  - Reduced hybrid versus full enhanced: reduced_hybrid accuracy=0.8607, brier=0.1048; full_enhanced accuracy=0.8711, brier=0.0950.
+  - Cross-environment failure should ideally come with higher uncertainty. Where incorrect cross-environment predictions still have high confidence, that is a sign of overconfidence under distribution shift. The clearest case here was proxy_only.
+
+Charts:
+  - /Users/mannz/Desktop/polymer degredation/firstdataset/reports/week12_charts/week12_calibration_curve.png
+  - /Users/mannz/Desktop/polymer degredation/firstdataset/reports/week12_charts/week12_selective_accuracy.png
+  - /Users/mannz/Desktop/polymer degredation/firstdataset/reports/week12_charts/week12_uncertainty_correct_vs_incorrect.png

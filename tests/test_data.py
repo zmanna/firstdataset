@@ -22,6 +22,7 @@ from firstdataset.week8_validation import run_cross_environment_validation
 from firstdataset.week9_validation import apply_smote, run_week9_validation
 from firstdataset.week10_features import build_tier2_proxy_features, build_week10_feature_bundle, run_week10_feature_evaluation
 from firstdataset.week11_analysis import compute_feature_rankings, evaluate_feature_sets
+from firstdataset.week12_uncertainty_analysis import run_week12_uncertainty_analysis
 
 
 class QSARDataTests(unittest.TestCase):
@@ -138,6 +139,18 @@ class QSARDataTests(unittest.TestCase):
         self.assertEqual(results["feature_set"].nunique(), 4)
         self.assertEqual(generalization.shape[0], 4)
         self.assertGreaterEqual(len(feature_sets.top_ranked), 10)
+
+    def test_week12_uncertainty_outputs(self) -> None:
+        predictions, metrics, selective, cross_env = run_week12_uncertainty_analysis(
+            random_state=42,
+            model_names=("random_forest_classifier",),
+        )
+        self.assertEqual(predictions["feature_set"].nunique(), 4)
+        self.assertEqual(metrics["feature_set"].nunique(), 4)
+        self.assertIn("brier_score", metrics.columns)
+        self.assertIn("ece", metrics.columns)
+        self.assertIn("coverage", selective.columns)
+        self.assertTrue((cross_env["evaluation_type"] == "cross_environment").all())
 
 
 if __name__ == "__main__":

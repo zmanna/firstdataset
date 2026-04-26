@@ -40,7 +40,13 @@ def _evaluate_binary_predictions(y_true: np.ndarray, y_pred: np.ndarray, y_score
     return metrics, matrix
 
 
-def _build_proxy_environments(X: np.ndarray, y: np.ndarray, n_environments: int, random_state: int) -> np.ndarray:
+def build_proxy_environments_for_arrays(
+    X: np.ndarray,
+    y: np.ndarray,
+    *,
+    n_environments: int,
+    random_state: int,
+) -> np.ndarray:
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X)
 
@@ -74,7 +80,12 @@ def run_cross_environment_validation_for_arrays(
     n_environments: int = 3,
     random_state: int = 42,
 ) -> tuple[list[Week8FoldResult], pd.DataFrame]:
-    environment_labels = _build_proxy_environments(X, y, n_environments, random_state)
+    environment_labels = build_proxy_environments_for_arrays(
+        X,
+        y,
+        n_environments=n_environments,
+        random_state=random_state,
+    )
 
     results: list[Week8FoldResult] = []
     for environment_id in range(n_environments):

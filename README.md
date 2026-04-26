@@ -16,6 +16,7 @@ source "/Users/mannz/Desktop/polymer degredation/firstdataset/activate-project.s
 - `src/firstdataset/week9_validation.py`: 5-fold stratified validation with SMOTE support
 - `src/firstdataset/week10_features.py`: Week 10 feature engineering tiers and evaluation
 - `src/firstdataset/week11_analysis.py`: Week 11 feature importance and selection
+- `src/firstdataset/week12_uncertainty_analysis.py`: Week 12 uncertainty, calibration, and reliability analysis
 - `scripts/run_regression_baselines.py`: generic regression runner for any CSV with a numeric target
 - `scripts/train_week6_fnn.py`: Week 6 feedforward neural network run
 - `scripts/train_week7_gnn.py`: Week 7 descriptor-graph prototype run
@@ -23,6 +24,7 @@ source "/Users/mannz/Desktop/polymer degredation/firstdataset/activate-project.s
 - `scripts/run_week9_validation.py`: Week 9 validation and imbalance comparison
 - `scripts/run_week10_feature_engineering.py`: Week 10 feature engineering comparison
 - `scripts/run_week11_feature_analysis.py`: Week 11 feature importance and selection
+- `scripts/run_week12_uncertainty_analysis.py`: Week 12 uncertainty and calibration analysis
 
 ## Run regression baselines
 
@@ -80,3 +82,20 @@ This writes:
 - `reports/week11_feature_sets.json`
 - `reports/week11_charts/`
 - `WEEK11_FEATURE_ANALYSIS_SUMMARY.txt`
+
+## Run Week 12 uncertainty analysis
+
+```sh
+PYTHONPATH="/Users/mannz/Desktop/polymer degredation/firstdataset/src" \
+MPLBACKEND=Agg MPLCONFIGDIR="/tmp/matplotlib-week12" \
+python "/Users/mannz/Desktop/polymer degredation/firstdataset/scripts/run_week12_uncertainty_analysis.py"
+```
+
+This writes:
+
+- `reports/week12_prediction_level_uncertainty.csv`
+- `reports/week12_uncertainty_metrics.csv`
+- `reports/week12_selective_prediction.csv`
+- `reports/week12_cross_env_uncertainty.csv`
+- `reports/week12_uncertainty_summary.txt`
+- `reports/week12_charts/`

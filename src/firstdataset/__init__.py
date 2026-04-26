@@ -17,7 +17,12 @@ from .modeling import (
     run_regression_baselines_from_csv,
 )
 from .week7_gnn import Week7Result, run_week7_descriptor_graph_prototype
-from .week8_validation import Week8FoldResult, run_cross_environment_validation, write_week8_charts
+from .week8_validation import (
+    Week8FoldResult,
+    build_proxy_environments_for_arrays,
+    run_cross_environment_validation,
+    write_week8_charts,
+)
 from .week9_validation import FoldDiagnostics, apply_smote, run_week9_validation
 from .week10_features import (
     TIER1_BASELINE_FEATURES,
@@ -35,6 +40,7 @@ from .week11_analysis import (
     evaluate_feature_sets,
     write_week11_charts,
 )
+from .week12_uncertainty_analysis import run_week12_uncertainty_analysis, write_week12_charts
 
 __all__ = [
     "CURATED_DATA_PATH",
@@ -43,6 +49,7 @@ __all__ = [
     "build_curated_qsar_dataset",
     "ClassificationResult",
     "FoldDiagnostics",
+    "build_proxy_environments_for_arrays",
     "build_week11_feature_sets",
     "build_tier2_proxy_features",
     "build_week10_feature_bundle",
@@ -59,6 +66,7 @@ __all__ = [
     "run_cross_environment_validation",
     "run_week9_validation",
     "run_week10_feature_evaluation",
+    "run_week12_uncertainty_analysis",
     "split_qsar_biodegradation",
     "split_tabular_regression_dataset",
     "standardize_qsar_columns",
@@ -71,4 +79,5 @@ __all__ = [
     "write_week8_charts",
     "write_week10_chart",
     "write_week11_charts",
+    "write_week12_charts",
 ]

@@ -1,15 +1,15 @@
-# QSAR Biodegradation Modeling
+# Polymer Degradation Pathway Prediction
 
-A Python machine learning pipeline for QSAR biodegradation dataset curation, modeling, validation, feature analysis, and uncertainty reporting.
+A Python machine learning pipeline for predicting polymer degradation pathways from curated molecular descriptor data.
 
 ## Overview
 
-This is the strongest portfolio-style technical repository in the account. It shows a progression from dataset curation to baseline modeling, neural network experiments, cross-environment validation, feature engineering, feature importance, uncertainty analysis, and final model selection.
+This is the strongest portfolio-style technical repository in the account. It shows a progression from dataset curation to baseline modeling, neural network experiments, validation, feature engineering, feature importance, uncertainty analysis, and final model selection for polymer degradation pathway prediction.
 
 ## What This Project Demonstrates
 
 - Building a reproducible Python data-science project with source modules, scripts, reports, and tests.
-- Curating a QSAR biodegradation dataset for supervised learning.
+- Curating molecular descriptor data for supervised polymer degradation pathway prediction.
 - Comparing baseline models, feature sets, validation strategies, and uncertainty metrics.
 - Preserving experiment summaries and generated reports so results can be audited later.
 - Using tests to protect core data-loading behavior.
@@ -24,7 +24,7 @@ This is the strongest portfolio-style technical repository in the account. It sh
 | `data/` | Processed and source dataset folders. |
 | `reports/` | Generated metrics, charts, feature rankings, uncertainty reports, and model-selection artifacts. |
 | `tests/` | Automated tests for key data functionality. |
-| `QSAR_BIODEGRADATION_CURATED.csv` | Curated dataset artifact used by modeling workflows. |
+| `QSAR_BIODEGRADATION_CURATED.csv` | Curated molecular descriptor dataset artifact used by the modeling workflows. The filename reflects the source dataset label, while the project goal is polymer degradation pathway prediction. |
 | `WEEK*_*.md, WEEK*_*.txt, WEEK*_*.json` | Stage-by-stage experiment summaries and metrics. |
 | `activate-project.sh` | Local project activation helper. |
 
@@ -39,7 +39,7 @@ PYTHONPATH=src python scripts/run_week13_model_selection.py
 
 ## How to Read This Repository
 
-Read this project chronologically: start with dataset curation, then baseline modeling, then validation, feature engineering, uncertainty analysis, and final model selection.
+Read this project chronologically: start with dataset curation, then baseline modeling, then validation, feature engineering, uncertainty analysis, and final model selection. The central question is how molecular descriptors can support prediction of polymer degradation pathways.
 
 ## Documentation Roadmap
 

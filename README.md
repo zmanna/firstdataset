@@ -30,6 +30,13 @@ The current dataset is descriptor-based. Some source filenames still reference Q
 | `tests/` | Automated tests for key data functionality. |
 | `activate-project.sh` | Local project activation helper. |
 
+## Formal Documentation
+
+- `docs/ARCHITECTURE.md`: system layout, module responsibilities, and data flow.
+- `docs/DATA.md`: dataset provenance, curation decisions, and limitations.
+- `docs/MODELING.md`: modeling stages, reliability criteria, and result interpretation.
+- `CONTRIBUTING.md`: conventions for extending code, datasets, scripts, and reports.
+
 ## Setup
 
 ```sh
